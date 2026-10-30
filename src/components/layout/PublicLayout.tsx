@@ -1,7 +1,8 @@
 import { Link, Outlet } from 'react-router-dom'
 import { cn } from '../../lib/utils'
 import { useSettings } from '../../features/settings/useSettings'
-import { Menu, X, HardHat, MapPin, Phone, Mail } from 'lucide-react'
+import { PublicFooter } from './PublicFooter'
+import { Menu, X, HardHat } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 import { motion, AnimatePresence } from 'framer-motion'
@@ -121,101 +122,7 @@ export const PublicLayout = () => {
                 <Outlet />
             </main>
 
-            {/* Premium Footer */}
-            <footer className="bg-slate-950 text-white pt-20 pb-8 border-t border-slate-900">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-4 gap-12 mb-16">
-                        {/* Brand */}
-                        <div className="md:col-span-1 space-y-6">
-                            <div className="flex flex-col leading-none">
-                                <span className="font-heading font-bold text-3xl tracking-tighter text-white">ROCAMA</span>
-                                <span className="text-xs tracking-[0.3em] uppercase text-gray-300 font-medium">Engenharia System</span>
-                            </div>
-                            <p className="text-gray-200 text-sm leading-relaxed max-w-xs">
-                                Transformando visões em estruturas concretas. Excelência, inovação e compromisso em cada metro quadrado construído.
-                            </p>
-                        </div>
-
-                        {/* Quick Links */}
-                        <div className="md: col-span-1">
-                            <h4 className="font-heading font-bold text-sm uppercase tracking-widest mb-6 text-primary">Navegação</h4>
-                            <ul className="space-y-3 text-sm text-gray-200">
-                                <li>
-                                    <Link to="/sobre-nos" className="hover:text-white transition-colors flex items-center gap-2 group">
-                                        <span className="w-0 group-hover:w-2 h-px bg-primary transition-all"></span>
-                                        Sobre a Empresa
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/servicos" className="hover:text-white transition-colors flex items-center gap-2 group">
-                                        <span className="w-0 group-hover:w-2 h-px bg-primary transition-all"></span>
-                                        Nossos Serviços
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/projetos" className="hover:text-white transition-colors flex items-center gap-2 group">
-                                        <span className="w-0 group-hover:w-2 h-px bg-primary transition-all"></span>
-                                        Portfólio Recente
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/contato" className="hover:text-white transition-colors flex items-center gap-2 group">
-                                        <span className="w-0 group-hover:w-2 h-px bg-primary transition-all"></span>
-                                        Entre em Contato
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Services */}
-                        <div className="md:col-span-1">
-                            <h4 className="font-heading font-bold text-sm uppercase tracking-widest mb-6 text-primary">Especialidades</h4>
-                            <ul className="space-y-3 text-sm text-gray-200">
-                                {['Construção Civil', 'Reformas de Alto Padrão', 'Projetos Arquitetônicos', 'Consultoria Técnica'].map((link) => (
-                                    <li key={link}>
-                                        <Link to="/servicos" className="hover:text-white transition-colors">
-                                            {link}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Contact */}
-                        <div className="md:col-span-1">
-                            <h4 className="font-heading font-bold text-sm uppercase tracking-widest mb-6 text-primary">Contato</h4>
-                            <ul className="space-y-4">
-                                {settings?.address && (
-                                    <li className="flex items-start gap-4 text-gray-200">
-                                        <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                        <span className="text-sm leading-relaxed">{settings.address}</span>
-                                    </li>
-                                )}
-                                {settings?.whatsapp && (
-                                    <li className="flex items-center gap-4 text-gray-200">
-                                        <Phone className="h-5 w-5 text-primary shrink-0" />
-                                        <span className="text-sm">{settings.whatsapp}</span>
-                                    </li>
-                                )}
-                                {settings?.contact_email && (
-                                    <li className="flex items-center gap-4 text-gray-200">
-                                        <Mail className="h-5 w-5 text-primary shrink-0" />
-                                        <span className="text-sm">{settings.contact_email}</span>
-                                    </li>
-                                )}
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-medium uppercase tracking-wider">
-                        <p>© {new Date().getFullYear()} Rocama Engenharia. Todos os direitos reservados.</p>
-                        <div className="flex items-center gap-8">
-                            <Link to="/contato" className="hover:text-white transition-colors">Política de Privacidade</Link>
-                            <Link to="/contato" className="hover:text-white transition-colors">Termos de Uso</Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <PublicFooter />
         </div>
     )
 }

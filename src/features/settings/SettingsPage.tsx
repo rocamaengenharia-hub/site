@@ -200,7 +200,8 @@ export const SettingsPage = () => {
                     <CardHeader>
                         <CardTitle>Contato e Redes Sociais</CardTitle>
                         <CardDescription>
-                            Como os clientes podem entrar em contato.
+                            Como os clientes podem entrar em contato. Aparecem no rodapé do site; as redes sociais
+                            deixadas em branco não aparecem.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="grid gap-6 md:grid-cols-2">

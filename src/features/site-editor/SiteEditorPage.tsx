@@ -11,6 +11,7 @@ import { PortfolioPageEditor } from "./PortfolioPageEditor"
 import { AboutPageEditor } from "./AboutPageEditor"
 import { BlogPageEditor } from "./BlogPageEditor"
 import { ContactPageEditor } from "./ContactPageEditor"
+import { FooterEditor } from "./FooterEditor"
 
 export const SiteEditorPage = () => {
     return (
@@ -30,6 +31,7 @@ export const SiteEditorPage = () => {
                     <TabsTrigger value="about">Sobre Nós</TabsTrigger>
                     <TabsTrigger value="blog">Blog</TabsTrigger>
                     <TabsTrigger value="contact">Contato</TabsTrigger>
+                    <TabsTrigger value="footer">Rodapé</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="home" className="space-y-8">
@@ -60,6 +62,10 @@ export const SiteEditorPage = () => {
 
                 <TabsContent value="contact" className="space-y-8">
                     <ContactPageEditor />
+                </TabsContent>
+
+                <TabsContent value="footer" className="space-y-8">
+                    <FooterEditor />
                 </TabsContent>
             </Tabs>
         </div>
