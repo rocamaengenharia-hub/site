@@ -51,6 +51,9 @@ export const StatsBar = () => {
         }))
     }, [pageData])
 
+    // Lista salva vazia no editor = esconder a faixa (sem cair nos números de exemplo)
+    if (stats.length === 0) return null
+
     return (
         <section className="bg-primary text-white border-y border-white/10 relative overflow-hidden">
             {/* Texture/Noise overlay if global CSS has it, otherwise subtle grain via CSS gradient */}

@@ -39,6 +39,9 @@ export const TestimonialsSection = () => {
         }))
     }, [pageData])
 
+    // Lista salva vazia no editor = esconder a seção (sem cair nos depoimentos de exemplo)
+    if (testimonials.length === 0) return null
+
     return (
         <section className="py-24 md:py-32 bg-white relative overflow-hidden" id="testimonials">
             {/* Technical Background Details */}
