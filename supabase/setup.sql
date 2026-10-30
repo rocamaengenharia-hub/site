@@ -208,10 +208,18 @@ BEGIN
     END LOOP;
 END $$;
 
--- Posts: público vê só publicados; admin vê todos
+-- Posts: público vê só publicados; admin vê todos.
+-- Duas policies porque anon não pode executar is_admin(): numa policy única
+-- com OR, o Postgres avalia is_admin() mesmo para anon e o blog inteiro dá erro.
 DROP POLICY IF EXISTS "posts_read" ON public.posts;
-CREATE POLICY "posts_read" ON public.posts
-    FOR SELECT TO anon, authenticated
+DROP POLICY IF EXISTS "posts_read_public" ON public.posts;
+CREATE POLICY "posts_read_public" ON public.posts
+    FOR SELECT TO anon
+    USING (is_published = true);
+
+DROP POLICY IF EXISTS "posts_read_authenticated" ON public.posts;
+CREATE POLICY "posts_read_authenticated" ON public.posts
+    FOR SELECT TO authenticated
     USING (is_published = true OR (SELECT public.is_admin()));
 
 DROP POLICY IF EXISTS "admin_insert" ON public.posts;
